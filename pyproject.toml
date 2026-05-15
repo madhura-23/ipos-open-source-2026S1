@@ -37,7 +37,7 @@ dev = [
 
 
 [project.urls]
-Homepage = "http://github.com/your_username/task-manager-cli"
+Homepage = "https://github.com/Robbo-lab/ipos-open-source-2026S1.git"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
