@@ -73,7 +73,7 @@ def miles_to_kilometers(
     HTTP endpoint: convert miles to kilometers with input validation.
 
     Args:
-        miles: Distance in miles.
+        body: Request body containing the distance in miles.
 
     Returns:
         JSON dict with the result and operation name, or an error message.
@@ -86,7 +86,7 @@ def miles_to_kilometers(
             audited_at=time.time(),
         )
     except ValueError as exc:  # Keep HTTP response friendly
-        raise HTTPException(status_code=400, detail=str(exc))
+        raise HTTPException(status_code=400, detail=str(exc))  # noqa: B904
 
 
 TOOL_DEFINITION = [

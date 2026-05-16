@@ -4,9 +4,10 @@ from typing import Any
 
 from fastmcp import FastMCP
 from fastmcp.resources import BinaryResource, TextResource
+from pydantic import AnyUrl
 
 
-def register_resources(
+def register_resources(  # noqa: C901
     mcp: FastMCP,
     definitions: Iterable[dict[str, Any]],
     uri_template: str = "resource://converter/{name}",
@@ -54,14 +55,14 @@ def register_resources(
             )
             if isinstance(payload, (bytes, bytearray)):
                 resource = BinaryResource(
-                    uri=uri,
+                    uri=AnyUrl(uri),
                     name=definition.get("display_name", definition["name"]),
                     mime_type=mime,
                     data=bytes(payload),
                 )
             else:
                 resource = TextResource(
-                    uri=uri,
+                    uri=AnyUrl(uri),
                     name=definition.get("display_name", definition["name"]),
                     mime_type=mime,
                     text=payload,

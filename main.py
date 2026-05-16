@@ -44,7 +44,7 @@ def root():
 def health():
     return {
         "status": "ok",
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat() + "Z",
         "python": platform.python_version(),
         "platform": platform.platform(),
         "pid": os.getpid(),

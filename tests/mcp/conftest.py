@@ -1,5 +1,7 @@
 import json
 import os
+from collections.abc import Generator
+from typing import Any
 
 import httpx
 import pytest
@@ -32,7 +34,7 @@ def mcp_headers(protocol_version: str) -> dict[str, str]:
 
 
 @pytest.fixture(scope="session")
-def http_client() -> httpx.Client:
+def http_client() -> Generator[httpx.Client]:
     with httpx.Client(timeout=10.0) as client:
         yield client
 
@@ -45,7 +47,7 @@ class MCPTestClient:
         self.session_id = None
 
     def rpc(self, method: str, params: dict | None = None, rpc_id: int | str = 1):
-        payload = {"jsonrpc": "2.0", "id": rpc_id, "method": method}
+        payload: dict[str, Any] = {"jsonrpc": "2.0", "id": rpc_id, "method": method}
         if params is not None:
             payload["params"] = params
 
@@ -57,7 +59,7 @@ class MCPTestClient:
         return response
 
     def notification(self, method: str, params: dict | None = None):
-        payload = {"jsonrpc": "2.0", "method": method}
+        payload: dict[str, Any] = {"jsonrpc": "2.0", "method": method}
         if params is not None:
             payload["params"] = params
         return self.client.post(self.url, json=payload, headers=self.headers)

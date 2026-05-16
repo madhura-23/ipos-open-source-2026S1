@@ -1,5 +1,7 @@
 import asyncio
 
+from fastmcp.prompts.base import PromptResult
+
 from main import mcp  # MCP server instance
 
 
@@ -7,6 +9,7 @@ from main import mcp  # MCP server instance
 async def main():
     # Get the prompt template from the MCP server
     prompt = await mcp.get_prompt("explain_conversion")
+    assert prompt is not None
 
     # Render it with the arguments
     result = await prompt.render({
@@ -14,6 +17,7 @@ async def main():
         "input_unit": "miles",
         "target_unit": "km",
     })
+    assert isinstance(result, PromptResult)
 
     # result.messages contains the list of rendered Message objects
     for msg in result.messages:

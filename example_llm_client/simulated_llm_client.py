@@ -15,22 +15,24 @@ KM_TO_MILES_TOOL = "kilometers_to_miles"
 
 
 def require_env(value: str | None, name: str) -> str:
-    pass
+    if value is None:
+        raise ValueError(f"Missing required environment variable: {name}")
+    return value
 
 
-async def handle_mcp_progress() -> None:
+def handle_mcp_progress() -> None:
     """Print MCP progress notifications so they are visible during the demo."""
-    pass
+    return
 
 
-async def call_mcp_tool():
+def call_mcp_tool():
     """
     Send an MCP request to the existing converter MCP server and return its response.
 
     The calculation happens on the MCP server. This client only orchestrates the
     request/response flow and forwards the structured tool result to Gemini.
     """
-    pass
+    return {}
 
 
 def build_gemini_prompt():
@@ -42,12 +44,12 @@ def build_gemini_prompt():
     LLM receives the verified MCP response after the tool call completes.
     LLM explains the result, but it is not asked to perform the calculation.
     """
-    pass
+    return ""
 
 
 def generate_ll_explanation() -> str:
     """Check fro streamable content from LLM output and return the combined explanation text."""
-    pass
+    return ""
 
 
 async def run() -> None:
