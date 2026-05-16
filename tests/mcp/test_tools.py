@@ -4,7 +4,7 @@ from conftest import parse_mcp_response
 def test_tools_list(mcp_client):
     response = mcp_client.rpc("tools/list", {}, id=2)
 
-    assert response.status_code == 200
+    assert response.status_code == 200  # noqa: PLR2004
     body = parse_mcp_response(response)
     print(f"[test_tools_list] status_code={response.status_code}")
     print(f"[test_tools_list] body={body}")
@@ -30,7 +30,7 @@ def test_tools_call_miles_to_km(mcp_client):
         id=3,
     )
 
-    assert response.status_code == 200
+    assert response.status_code == 200  # noqa: PLR2004
     body = parse_mcp_response(response)
     print(f"[test_tools_call_miles_to_km] status_code={response.status_code}")
     print(f"[test_tools_call_miles_to_km] body={body}")

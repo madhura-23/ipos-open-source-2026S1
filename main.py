@@ -11,7 +11,6 @@ from fastmcp import FastMCP
 from mcp_prompts.converter_prompts import explain_conversion_prompt
 from mcp_resources.converter_resources import RESOURCE_DEFINITIONS
 from mcp_tools.miles_to_km import router as mile_to_km
-
 from utils.resource_utils import register_resources
 
 # FastAPI app for plain HTTP

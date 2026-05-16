@@ -44,8 +44,8 @@ class MCPTestClient:
         self.headers = dict(headers)
         self.session_id = None
 
-    def rpc(self, method: str, params: dict | None = None, id: int | str = 1):
-        payload = {"jsonrpc": "2.0", "id": id, "method": method}
+    def rpc(self, method: str, params: dict | None = None, rpc_id: int | str = 1):
+        payload = {"jsonrpc": "2.0", "id": rpc_id, "method": method}
         if params is not None:
             payload["params"] = params
 
@@ -86,7 +86,7 @@ def mcp_client(http_client, mcp_url, mcp_headers, protocol_version):
             "capabilities": {},
             "clientInfo": {"name": "pytest", "version": "1.0"},
         },
-        id=0,
+        rpc_id=0,
     )
     assert init_response.status_code in {200, 202}
 

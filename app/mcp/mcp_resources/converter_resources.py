@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 
-def unit_reference() -> Dict[str, Any]:
+def unit_reference() -> dict[str, Any]:
     """
     JSON cheatsheet of supported conversions, formulas, and sample IO.
 
@@ -17,7 +17,10 @@ def unit_reference() -> Dict[str, Any]:
         "title": "Unit Converter Cheatsheet",
         "supported": {
             "distance": {
-                "miles_to_kilometers": {"formula": "mi ÷ 0.621371", "example": {"input": 3.1, "output": 4.98895}},
+                "miles_to_kilometers": {
+                    "formula": "mi ÷ 0.621371",
+                    "example": {"input": 3.1, "output": 4.98895},
+                },
             },
         },
         "notes": [

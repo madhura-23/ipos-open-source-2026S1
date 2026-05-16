@@ -3,7 +3,7 @@ from conftest import parse_mcp_response
 
 def test_prompts_list(mcp_client):
     response = mcp_client.rpc("prompts/list", {}, id=10)
-    assert response.status_code == 200
+    assert response.status_code == 200  # noqa: PLR2004
 
     body = parse_mcp_response(response)
     prompts = body["result"]["prompts"]
